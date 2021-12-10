@@ -1,4 +1,4 @@
-class FilterCitiesController < ApplicationController
+class CitiesController < ApplicationController
   def index
     @states = State.all
     @cities = CitiesFetcher.new.filter(params)
