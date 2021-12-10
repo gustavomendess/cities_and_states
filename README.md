@@ -1,24 +1,48 @@
-# README
+**Installation (linux):**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**With docker:**
 
-Things you may want to cover:
+`sudo apt install docker`
 
-* Ruby version
+`Sudo apt install docker-compose`
 
-* System dependencies
+`git clone git@github.com:gustavomendess/cities_and_states.git`
 
-* Configuration
+`cd cities_and_states`
 
-* Database creation
+in config/database.yml, configure:
 
-* Database initialization
+**host: postgres**
 
-* How to run the test suite
+`docker-compose up -d --build`
 
-* Services (job queues, cache servers, search engines, etc.)
+Wait a few minutes and soon the application and database will be running and can be accessed at [localhost:3000](Installation (linux):
 
-* Deployment instructions
+**No docker:**
 
-* ...
+install postgresql:
+[https://www.postgresql.org/download/linux/ubuntu/](Installation (linux):
+
+**Configure the postgresql**
+
+`git clone git@github.com:gustavomendess/cities_and_states.git`
+
+`cd cities_and_states`
+
+**After that configure database.yml as needed**
+
+install gems:
+
+`Bundle install`
+
+Setting up database:
+
+`rake db:create db:migrate db:seed`
+
+Running the tests:
+
+`rspec spec/`
+
+Starting the server:
+
+`rails s`
