@@ -1,0 +1,53 @@
+<%= nav_bar brand: "Consulta de cidades e estados", brand_link: root_path do %>
+<% end %>
+
+<body>
+<div class="container">
+  <%= form_tag filter_cities_path, method: :get,
+               class: "navbar-form navbar-right" do %>
+    <div class="form-group">
+      <label>Filtrar por nome</label>
+      <% if @searched_name.nil? %>
+        <%= text_field :city, :name, class: "form-control" %>
+      <% else %>
+        <%= text_field :city, :name, class: "form-control", value: @searched_name %>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <label>Filtrar por estado</label>
+      <% if @searched_state.nil? %>
+        <%= collection_select(:state, :id, @states, :id, :name, { include_blank: 'Todos os estados' }, { class: 'form-control' }) %>
+      <% else %>
+        <%= collection_select(:state, :id, @states, :id, :name, { include_blank: 'Todos os estados', selected: @searched_state.id }, { class: 'form-control' }) %>
+      <% end %>
+      <%= button_to "Buscar", nil, class: "btn btn-default" %>
+    </div>
+  <% end %>
+
+  <% unless @cities.nil? %>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <td><b>Cidade</b></td>
+        <td><b>Estado</b></td>
+      </tr>
+      </thead>
+      <tbody>
+
+      <%= render partial: 'cities', object: @cities %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <%= yield %>
+</div>
+
+</body>
+<div class="container">
+  <footer class="page-footer font-small">
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+      <a href="https://github.com/gustavomendess"> <font color="red"> Gustavo Mendes </font></a>
+    </div>
+  </footer>
+</div>
+</html>

@@ -1,0 +1,6 @@
+en:
+  enumerations:
+    search_types:
+      by_state_and_name: "Por nome e estado"
+      by_state_id: "Por estado"
+      by_name: "Por nome"

@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+
+  postgres:
+    image: postgres:13
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=cities_and_states_development
+      - POSTGRES_PASSWORD=postgres
+
+  app:
+    build: .
+    container_name: application
+    command: ./script/start
+    volumes:
+      - .:/app
+      - box:/box
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+
+volumes:
+  app:
+  box:
+  postgres:

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+bundle check || BUNDLE_JOBS=4 bundle install
+
+yarn install
+
+if ! test -f ".setup"; then
+  bundle exec rake db:create
+  bundle exec rake db:migrate
+  bundle exec rake db:seed
+
+  touch .setup
+fi
+
+rm -f /app/tmp/pids/server.pid
+
+echo "Starting.."
+bundle exec rails server -b 0.0.0.0
