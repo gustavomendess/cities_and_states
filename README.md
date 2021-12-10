@@ -16,12 +16,12 @@ in config/database.yml, configure:
 
 `docker-compose up -d --build`
 
-Wait a few minutes and soon the application and database will be running and can be accessed at [localhost:3000](Installation (linux):
+Wait a few minutes and soon the application and database will be running and can be accessed at [localhost:3000]:
 
 **No docker:**
 
 install postgresql:
-[https://www.postgresql.org/download/linux/ubuntu/](Installation (linux):
+[https://www.postgresql.org/download/linux/ubuntu/]:
 
 **Configure the postgresql**
 
