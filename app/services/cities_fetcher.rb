@@ -31,7 +31,7 @@ class CitiesFetcher
       City.by_state_and_name(state_id, name)
     elsif state_id.present?
       City.by_state_id(state_id)
-    elsif name.present?
+    else
       City.by_name(name)
     end
   end
